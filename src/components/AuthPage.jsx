@@ -6,8 +6,8 @@ import { signIn } from './../redux/authReducer'
 const AuthPage = ({ signIn }) => {
   const [form] = Form.useForm()
 
-  const onFinish = ({ login, password }) => {
-    signIn(login, password)
+  const onFinish = ({ login, password, remember }) => {
+    signIn(login, password, remember)
       .catch(e => {
         form.setFields([{ name: 'login', errors: [''] }, { name: 'password', errors: ["Неверный логин или пароль"] }])
       })
@@ -51,7 +51,7 @@ const AuthPage = ({ signIn }) => {
         </Form.Item>
 
         <Form.Item name="remember" valuePropName="checked">
-          <Checkbox>Remember me</Checkbox>
+          <Checkbox>Поддерживать сессию</Checkbox>
         </Form.Item>
 
         <Form.Item>

@@ -43,11 +43,12 @@ const removeAuthData = () => ({ type: REMOVE_AUTH_DATA })
 
 
 //THUNK
-export const signIn = (login, password) => async (dispatch) => {
+export const signIn = (login, password, remember) => async (dispatch) => {
   try {
     const res = await window.ipcRenderer.invoke('signIn', { login, password })
 
-    localStorage.setItem(STORAGENAME, JSON.stringify(res))
+    if (remember)
+      localStorage.setItem(STORAGENAME, JSON.stringify(res))
 
     dispatch(setAuthData(res))
 

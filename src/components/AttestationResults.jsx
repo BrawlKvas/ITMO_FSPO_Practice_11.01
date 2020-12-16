@@ -2,7 +2,7 @@ import { Space, Table, Tag, message } from 'antd'
 import Text from 'antd/lib/typography/Text'
 import React, { useEffect, useState } from 'react'
 import { useSelector } from 'react-redux'
-import ratingColors from './values/ratingColors'
+import ratingColors from './../values/ratingColors'
 
 const columns = [
   {

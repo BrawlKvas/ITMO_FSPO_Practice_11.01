@@ -28,7 +28,7 @@ const Side = ({ role, signOut }) => {
 
   return (
     <Sider collapsible collapsed={collapsed} onCollapse={onCollapse}>
-      <div className="logo" />
+      <div className="logo"></div>
 
       <Menu theme="dark" defaultSelectedKeys={[history.location.pathname]} mode="inline">
 

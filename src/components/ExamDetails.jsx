@@ -2,7 +2,7 @@ import { Table, Tag, message } from 'antd'
 import React, { useEffect } from 'react'
 import { connect } from 'react-redux'
 import { loadExam } from './../redux/examReducer'
-import ratingColors from './values/ratingColors'
+import ratingColors from './../values/ratingColors'
 
 const columns = [
   {
