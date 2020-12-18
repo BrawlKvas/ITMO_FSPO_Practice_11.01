@@ -12,6 +12,3 @@ const store = createStore(
 )
 
 export default store
-
-//!DEV
-window.store = store 

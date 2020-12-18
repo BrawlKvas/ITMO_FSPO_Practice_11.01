@@ -7,7 +7,7 @@ import { addExamStudent } from './../../../redux/examReducer'
 const { Option } = Select
 
 const AddStudent = () => {
-  const dispatch = useDispatch() //? performance
+  const dispatch = useDispatch()
 
   const [groups, setGroups] = useState([])
   const [students, setStudents] = useState([])

@@ -55,8 +55,10 @@ const examReducer = (state = initState, action) => {
         students: state.students.filter(elem => elem.id !== action.studentId)
       }
 
-    case ADD_EXAM_STUDENT:
-      //TODO Проверка на повторение
+    case ADD_EXAM_STUDENT: {
+      if (state.students.find(item => item.id === action.student.id))
+        return state
+
       return {
         ...state,
         students: [
@@ -64,6 +66,8 @@ const examReducer = (state = initState, action) => {
           action.student
         ]
       }
+    }
+
 
     default:
       return state
