@@ -2,9 +2,9 @@ import React, { useEffect, useState } from 'react'
 import { message, Table } from 'antd'
 import { useSelector } from 'react-redux'
 import { NavLink } from 'react-router-dom'
-import useTabelSearch from '../common/useTabelSearch'
+import withColumnSearchProps from './../../hoc/withColumnSearchProps'
 
-const ExamHistory = () => {
+const ExamHistory = ({ columnSearchProps }) => {
 
   const [exams, setExams] = useState([])
   const teacherId = useSelector((state) => state.auth.id)
@@ -15,39 +15,37 @@ const ExamHistory = () => {
       .catch(() => message.error('Ошибка получения данных'))
   }, [teacherId])
 
-  const getColumnSearchProps = useTabelSearch()
-
   const columns = [
     {
       title: 'Дисциплина',
       dataIndex: 'discipline',
       key: 'discipline',
-      ...getColumnSearchProps('discipline')
+      ...columnSearchProps('discipline')
     },
     {
       title: 'Дата',
       dataIndex: 'date',
       key: 'date',
-      ...getColumnSearchProps('date')
+      ...columnSearchProps('date')
     },
     {
       title: 'Семестр',
       dataIndex: 'semester',
       key: 'semester',
       sorter: (a, b) => a.semester - b.semester,
-      ...getColumnSearchProps('semester')
+      ...columnSearchProps('semester')
     },
     {
       title: 'Группа',
       dataIndex: 'group',
       key: 'group',
-      ...getColumnSearchProps('group')
+      ...columnSearchProps('group')
     },
     {
       title: 'Кабинет',
       dataIndex: 'cabinet',
       key: 'cabinet',
-      ...getColumnSearchProps('cabinet')
+      ...columnSearchProps('cabinet')
     },
     {
       title: 'Результаты',
@@ -61,4 +59,4 @@ const ExamHistory = () => {
   )
 }
 
-export default ExamHistory
+export default withColumnSearchProps(ExamHistory)

@@ -2,7 +2,7 @@ import { Menu } from 'antd'
 import { Layout } from 'antd'
 import SubMenu from 'antd/lib/menu/SubMenu'
 import React, { useState } from 'react'
-import { NavLink, useHistory } from 'react-router-dom'
+import { NavLink, withRouter } from 'react-router-dom'
 
 import {
   BookOutlined,
@@ -17,9 +17,7 @@ const { Sider } = Layout
 const STUDENT = 'student' //?
 const TEACHER = 'teacher'
 
-const Side = ({ role, signOut }) => {
-  const history = useHistory()
-
+const Side = ({ role, signOut, location }) => {
   const [collapsed, setCollapsed] = useState(true)
 
   const onCollapse = (collapsed) => {
@@ -30,7 +28,7 @@ const Side = ({ role, signOut }) => {
     <Sider collapsible collapsed={collapsed} onCollapse={onCollapse}>
       <div className="logo"></div>
 
-      <Menu theme="dark" defaultSelectedKeys={[history.location.pathname]} mode="inline">
+      <Menu theme="dark" selectedKeys={location.pathname} mode="inline">
 
         <Menu.Item key="/profile" icon={<UserOutlined />}>
           <NavLink to="/profile">Профиль</NavLink>
@@ -65,4 +63,4 @@ const Side = ({ role, signOut }) => {
   )
 }
 
-export default Side
+export default withRouter(Side)

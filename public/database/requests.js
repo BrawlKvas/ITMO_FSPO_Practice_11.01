@@ -239,8 +239,6 @@ const getAttestationResults = async (studentId) => {
   }
 }
 
-getAttestationResults(10)
-
 module.exports.signIn = signIn
 module.exports.getInfoAboutMe = getInfoAboutMe
 module.exports.getGroups = getGroups
